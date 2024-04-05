@@ -1,6 +1,6 @@
 ﻿namespace Shared.Requests.Identity;
 
-public record RegistrationRequest(
+public record SignUpRequest(
     [Required] string LastName,
     [Required] string FirstName,
     string MiddleName,

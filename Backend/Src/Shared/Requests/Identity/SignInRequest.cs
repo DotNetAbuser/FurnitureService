@@ -1,5 +1,5 @@
 ﻿namespace Shared.Requests.Identity;
 
-public record TokenRequest(
+public record SignInRequest(
     [Required] string Username,
     [Required] string Password);
