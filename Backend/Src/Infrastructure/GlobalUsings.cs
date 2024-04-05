@@ -1,1 +1,11 @@
-﻿
+﻿global using Application.IServices;
+global using Application.IRepositories;
+global using Shared.Requests.Request;
+global using Shared.Responses.Request;
+global using Shared.Wrapper;
+global using Infrastructure.Repositories;
+global using Infrastructure.Services;
+global using Microsoft.Extensions.DependencyInjection;
+global using Application;
+global using Domain.Entities;
+global using Microsoft.EntityFrameworkCore;
