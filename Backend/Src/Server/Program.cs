@@ -9,6 +9,8 @@ builder.Services.AddDatabase(configuration);
 builder.Services.AddRepositories();
 builder.Services.AddServices();
 
+builder.Services.AddCors();
+
 builder.WebHost.ConfigureKestrel(serverOptions => {
         serverOptions.ListenAnyIP(5004);
     }).UseKestrel();
@@ -19,6 +21,12 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
 #endif
+
+app.UseCors(x => x
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    .SetIsOriginAllowed(origin => true) 
+    .AllowCredentials()); 
 
 app.MapControllers();
 app.UseHttpsRedirection();

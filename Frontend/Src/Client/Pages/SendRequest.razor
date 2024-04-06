@@ -1,0 +1,45 @@
+﻿@page "/"
+
+@rendermode InteractiveAuto
+
+@inject IJSRuntime JsRuntime
+@inject IRequestManager RequestManager
+@inject NavigationManager NavigationManager
+
+<EditForm Model="request">
+    <fieldset>
+        <legend>Заявка</legend>
+        <label>
+            Название мебели
+            <InputText @bind-Value="request.Furniture" type="text" name="name"/>
+        </label>
+        <br>
+
+        <label>
+            Описание проблемы
+            <InputTextArea @bind-Value="request.Description" type="text" name="surname"/>
+        </label>
+    </fieldset>
+
+    <button type="submit" @onclick="SubmitAsync">Отправить</button>
+</EditForm>
+
+@code {
+
+    private FurnitureRequest request = new();
+
+    private async Task SubmitAsync()
+    {
+        var result = await RequestManager.CreateAsync(request);
+        if (!result.Succeeded)
+        {
+            foreach (var message in result.Messages)
+                await JsRuntime.InvokeVoidAsync("Ошибка", message);
+            return;
+        }
+        foreach (var message in result.Messages)
+            await JsRuntime.InvokeVoidAsync("Успех", message);
+
+        NavigationManager.NavigateTo("requests");
+    }
+}
