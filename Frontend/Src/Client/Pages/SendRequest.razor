@@ -34,11 +34,11 @@
         if (!result.Succeeded)
         {
             foreach (var message in result.Messages)
-                await JsRuntime.InvokeVoidAsync("Ошибка", message);
+                await JsRuntime.InvokeVoidAsync("alert", message);
             return;
         }
         foreach (var message in result.Messages)
-            await JsRuntime.InvokeVoidAsync("Успех", message);
+            await JsRuntime.InvokeVoidAsync("alert", message);
 
         NavigationManager.NavigateTo("requests");
     }
