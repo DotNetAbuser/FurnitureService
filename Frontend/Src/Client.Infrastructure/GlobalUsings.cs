@@ -1,0 +1,10 @@
+﻿global using System.Net.Http.Json;
+global using Client.Infrastructure.Extensions;
+global using Client.Infrastructure.Routes;
+global using Shared.Requests.Request;
+global using Shared.Responses.Request;
+global using Shared.Wrapper;
+global using System.Text.Json;
+global using System.Text.Json.Serialization;
+global using Microsoft.Extensions.DependencyInjection;
+global using Client.Infrastructure.Managers;
