@@ -15,8 +15,10 @@ builder.WebHost.ConfigureKestrel(serverOptions => {
 
 var app = builder.Build();
 
+#if DEBUG
 app.UseSwagger();
 app.UseSwaggerUI();
+#endif
 
 app.MapControllers();
 app.UseHttpsRedirection();
